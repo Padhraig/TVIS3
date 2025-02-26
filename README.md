@@ -106,7 +106,7 @@ TVIS3 integrates multiple bioinformatics tools. Ensure these dependencies are in
 | **Conda**      | Used for managing Python environments           | [Install Conda](https://www.anaconda.com/download) |
 | **DeepSecE**   | Predicts secretion systems using deep learning  | [DeepSecE GitHub](https://github.com/zhangyumeng1sjtu/DeepSecE/blob/main/README.md) |
 | **SecRet6**    | Identifies T6SS components using BLASTp or HMMsearch | [SecRet6 Webpage](https://bioinfo-mml.sjtu.edu.cn/SecReT6/t6ss_prediction.php) |
-| **cblaster**   | Searches homologous gene clusters              | [cblaster GitHub]([https://github.com/gamcil/cblaster](https://github.com/gamcil/cblaster/blob/master/README.md)) |
+| **cblaster**   | Searches homologous gene clusters              | [cblaster GitHub](https://github.com/gamcil/cblaster/blob/master/README.md) |
 | **FastTree**   | Constructs phylogenetic trees                  | [FastTree PDF](https://morgannprice.github.io/fasttree/) |
 | **DeepTMHMM**  | Predicts transmembrane helices                 | [DeepTMHMM Webpage](https://dtu.biolib.com/DeepTMHMM) |
 | **HMMER**      | Builds and searches hidden Markov models       | [HMMER GitHub](https://github.com/EddyRivasLab/hmmer/blob/master/README.md) |
