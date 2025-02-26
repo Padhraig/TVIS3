@@ -116,5 +116,9 @@ TVIS3 integrates multiple bioinformatics tools. Ensure these dependencies are in
 🛠 Troubleshooting
 "Rscript is not recognized" error?
 → Add R to your system PATH.
+
 The app doesn't open?
 → Manually open the Listening on http://127.0.0.1:XXXX link in your browser.
+
+❌ Other Issues?
+Create a GitHub Issue in this repository, and describe your problem or email us [Here](TVIS3.Help@gmail.com)
