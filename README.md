@@ -3,10 +3,7 @@
   <img src="https://github.com/Padhraig/TVIS3/blob/main/Screenshot%202025-02-26%20151625.png" width="150">
 </p>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)         
-[![R Shiny](https://img.shields.io/badge/Built%20With-R%20Shiny-blue)](https://shiny.rstudio.com/)  
-[![GitHub repo size](https://img.shields.io/github/repo-size/Padhraig/TVIS3)](https://github.com/Padhraig/TVIS3)  
-[![GitHub last commit](https://img.shields.io/github/last-commit/Padhraig/TVIS3)](https://github.com/Padhraig/TVIS3)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![R Shiny](https://img.shields.io/badge/Built%20With-R%20Shiny-blue)](https://shiny.rstudio.com/)  [![GitHub repo size](https://img.shields.io/github/repo-size/Padhraig/TVIS3)](https://github.com/Padhraig/TVIS3)  [![GitHub last commit](https://img.shields.io/github/last-commit/Padhraig/TVIS3)](https://github.com/Padhraig/TVIS3)
 
 ## **🔬 Overview**  
 **TVIS3** is a Shiny application for analyzing Type VI Secretion Systems in bacterial genomes. It integrates multiple bioinformatics tools into an interactive graphical interface. The tools selected were chosen based on a pre-determined pipeline, created by Amy J. G. Anderson et al (2023), entitled 'Distribution and diversity of type VI secretion system clusters in Enterobacter bugandensis and Enterobacter cloacae '.
