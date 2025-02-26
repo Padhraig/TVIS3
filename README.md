@@ -4,7 +4,7 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/Padhraig/TVIS3)](https://github.com/Padhraig/TVIS3)  
 [![GitHub last commit](https://img.shields.io/github/last-commit/Padhraig/TVIS3)](https://github.com/Padhraig/TVIS3)
 
-## **🔬 Overview**  
+## **🔬 Overview**  ![Logo](https://github.com/Padhraig/TVIS3/blob/main/Screenshot%202025-02-26%20151625.png)
 **TVIS3** is a Shiny application for analyzing Type VI Secretion Systems in bacterial genomes. It integrates multiple bioinformatics tools into an interactive graphical interface. The tools selected were chosen based on a pre-determined pipeline, created by Amy J. G. Anderson et al (2023), entitled 'Distribution and diversity of type VI secretion system clusters in Enterobacter bugandensis and Enterobacter cloacae '.
 
 ---
