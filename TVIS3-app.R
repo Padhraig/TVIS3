@@ -1011,7 +1011,7 @@ server <- function(input, output, session) {
       "fi",
       
       # Activate Conda environment
-      paste("conda activate", shQuote(input$conda_env_deepsece)),
+      paste("conda init && conda activate ", shQuote(input$conda_env_deepsece)),
       
       # Install DeepSecE and dependencies
       "pip install git+https://github.com/zhangyumeng1sjtu/DeepSecE.git",
