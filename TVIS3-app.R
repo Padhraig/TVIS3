@@ -4,6 +4,8 @@ library(shinyjs)
 library(reticulate)
 library(DT)
 library(callr)
+library(promises)
+library(future)
 
 # Function to activate conda environment
 activate_conda_env <- function(conda_env_name) {
@@ -222,7 +224,7 @@ ui <- fluidPage(
                                               div(class = "loading-spinner"),
                                               div(class = "loading-text", "Setting up environment, please wait..."))),
                                    tags$hr(),
-                                   textInput("directory", "Specify local Directory to DeepSecE Installation", value = "/home/bioinfo/DeepSecE"),  # Input for directory
+                                   textInput("directory", "Specify local Directory to DeepSecE Installation", value = "./DeepSecE"),  # Input for directory
                                    
                                    #tags$hr("Users on MAC should use 'predict_mac.py'"),
                                    #fileInput("py_script", "Choose Python File", accept = c(".py")),
@@ -230,7 +232,14 @@ ui <- fluidPage(
                                    fileInput("fastaFile", "Choose FASTA File", accept = c(".fasta", ".fna", ".faa")),
                                    
                                    tags$hr(),
-                                   textInput("modelLocation", "Model Location Directory", value = "/home/bioinfo/DeepSecE/checkpoint.pt"),
+                                   textInput("modelLocation", "Model Download Location", value = "./DeepSecE/checkpoint.pt"),
+                                   actionButton("downloadModel", "Download Pretrained Model"),
+                                   hidden(
+                                     div(id = "loading_spinner_model_download", class = "loading-container",
+                                         div(class = "loading-spinner"),
+                                         div(class = "loading-text", "Downloading pretrained model, please wait...")
+                                     )
+                                   ),
                                    tags$hr(),
                                    checkboxGroupInput("secretionSystems", "Secretion Systems for prediction (Optional)", 
                                                       choices = list("I" = "I", "II" = "II", "III" = "III", "IV" = "IV", "VI" = "VI"), 
@@ -1010,6 +1019,16 @@ server <- function(input, output, session) {
       "    fi",
       "fi",
       
+      "# Check if DeepSecE directory exists in $HOME",
+      "if [ -d \"$HOME/DeepSecE\" ]; then",
+      "    echo '❌ Directory \"$HOME/DeepSecE\" already exists. Please rename or delete it before proceeding.'",
+      "    exit 1",
+      "else",
+      "    mkdir \"$HOME/DeepSecE\"",
+      "    cd \"$HOME/DeepSecE\"",
+      "fi",
+      
+      
       "conda init bash",
       "source ~/.bashrc",  # restart the shell to apply init changes
       paste("conda activate", shQuote(input$conda_env_deepsece)),
@@ -1052,7 +1071,36 @@ server <- function(input, output, session) {
     })
   })
   
-
+  observeEvent(input$downloadModel, {
+    req(input$modelLocation)
+    
+    download_url <- "https://tool2-mml.sjtu.edu.cn/DeepSecE/checkpoint.pt"
+    dest_path <- file.path(input$modelLocation, "checkpoint.pt")
+    
+    if (!dir.exists(input$modelLocation)) {
+      showNotification("❌ Directory does not exist.", type = "error")
+      return()
+    }
+    
+    options(timeout = max(600, getOption("timeout")))
+    
+    # Show spinner
+    shinyjs::show("loading_spinner_model_download")
+    showNotification("⬇️ Download started. Please wait...", duration = 5)
+    
+    future({
+      download.file(url = download_url, destfile = dest_path, mode = "wb", quiet = TRUE)
+    }) %...>% {
+      shinyjs::hide("loading_spinner_model_download")
+      showNotification("✅ Model downloaded successfully!", type = "message")
+    } %...!% {
+      shinyjs::hide("loading_spinner_model_download")
+      showNotification(paste("❌ Download failed:", .message), type = "error")
+    }
+  })
+  
+  
+  
   
   # Function to activate the Conda environment and set the activation flag
   activate_conda_env_wsl_deepsece <- function(conda_env_deepsece) {
