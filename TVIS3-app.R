@@ -1202,7 +1202,7 @@ server <- function(input, output, session) {
           paste(result, collapse = "\n")
         } else {
           # Unix/Mac or native environment
-          use_condaenv(input$conda_env_deepsece_ss, required = TRUE)
+          use_condaenv(input$conda_env_deepsece, required = TRUE)
           py_run_string("import os; print('Environment activated and verified.')")
           env_activated(TRUE)
           "Environment activated and verified successfully."
