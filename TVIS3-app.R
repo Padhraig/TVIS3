@@ -1379,7 +1379,7 @@ server <- function(input, output, session) {
           "import os; os.chdir('", directory, "'); os.system('python predict_genome.py --fasta_path ", 
           file_conda, " --model_location ", model_location,
           " --data_dir ", TXSS_data, " --out_dir ", directory7, 
-          save_attn, no_cuda, "')", sep = ""
+          " ", save_attn, " ", no_cuda, "')", sep = ""
         ))
         list(output = "Script ran successfully", status = 0)
       }
